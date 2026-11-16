@@ -1,9 +1,5 @@
 package Model;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 public class List {
     private Node head;
     private Node tail;
@@ -35,7 +31,7 @@ public class List {
         return tail;
     }
 
-    public void addFirst(Object obj) {
+    public void addFirst(Paciente obj) {
         Node node = new Node(obj);
 
         if (isEmpty()) {
@@ -49,7 +45,7 @@ public class List {
         size++;
     }
 
-    public void addLast(Object obj) {
+    public void addLast(Paciente obj) {
         Node node = new Node(obj);
 
         if (isEmpty()) {
@@ -63,7 +59,7 @@ public class List {
         size++;
     }
 
-    public Object removeFirst() throws Exception {
+    public Paciente removeFirst() throws Exception {
         if (!isEmpty()) {
             Node temp = head;
             head = temp.getNext();
@@ -80,7 +76,7 @@ public class List {
         }
     }
 
-    public Object removeLast() throws Exception {
+    public Paciente removeLast() throws Exception {
         if (size == 1) {
             return removeFirst();
         } else if (size > 1) {
@@ -102,7 +98,7 @@ public class List {
     }
 
     //Añadir nodo en cualquier posición
-    public void addAt(int posicion, Object obj) throws Exception {
+    public void addAt(int posicion, Paciente obj) throws Exception {
         if (posicion < 0 || posicion > size) {
             throw new Exception("Posición inválida");
         }
@@ -130,7 +126,7 @@ public class List {
     }
 
     //Remover nodo en cualquier posición
-    public Object removeAt(int posicion) throws Exception {
+    public Paciente removeAt(int posicion) throws Exception {
         if (isEmpty()) {
             throw new Exception("La lista está vacía");
         }

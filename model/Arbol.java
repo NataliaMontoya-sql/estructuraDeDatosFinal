@@ -17,24 +17,24 @@ public class Arbol {
     }
 
 
-    public void insertarNodo(int valor) {
-        raizPtr = insertarNodo(valor, raizPtr);
+    public void insertarNodo(Paciente paciente) {
+        raizPtr = insertarNodo(paciente, raizPtr);
     }
 
-    private Nodo insertarNodo(int valor, Nodo nodoPtr) {
+    private Nodo insertarNodo(Paciente paciente, Nodo nodoPtr) {
 
         if (nodoPtr == null) {
-            nodoPtr = new Nodo(valor);
-        } else if (valor < nodoPtr.getDato()) {
+            nodoPtr = new Nodo(paciente);
+        } else if (paciente.getId() < nodoPtr.getDato()) {
             nodoPtr.setIzquierdoPtr(
-                    insertarNodo(valor, nodoPtr.getIzquierdoPtr())
+                    insertarNodo(paciente, nodoPtr.getIzquierdoPtr())
             );
-        } else if (valor > nodoPtr.getDato()) {
+        } else if (paciente.getId() > nodoPtr.getDato()) {
             nodoPtr.setDerechoPtr(
-                    insertarNodo(valor, nodoPtr.getDerechoPtr())
+                    insertarNodo(paciente, nodoPtr.getDerechoPtr())
             );
         } else {
-            System.out.println("El valor " + valor + " ya existe en el árbol.");
+            System.out.println("El valor " + paciente.getId() + " ya existe en el árbol.");
         }
 
         return nodoPtr;
@@ -125,6 +125,23 @@ public class Arbol {
         } else {
             return true;
         }
+    }
+
+    private Paciente busquedaParaMostrar(int x, Nodo nodoPtr) {
+
+        if (nodoPtr == null) {
+            return null;
+        } else if (x < nodoPtr.getDato()) {
+            return busquedaParaMostrar(x, nodoPtr.getIzquierdoPtr());
+        } else if (x > nodoPtr.getDato()) {
+            return busquedaParaMostrar(x, nodoPtr.getDerechoPtr());
+        } else {
+            return nodoPtr.getInformacion();
+        }
+    }
+
+    public Paciente busquedaParaMostrar(int x) {
+        return busquedaParaMostrar(x, raizPtr);
     }
 
     public Nodo buscaMenor() {

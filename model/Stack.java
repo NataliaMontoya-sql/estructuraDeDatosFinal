@@ -17,7 +17,7 @@ public class Stack {
     }
 
     // Insertar en la pila
-    public void push(Object e) {
+    public void push(Paciente e) {
         data.addFirst(e);
     }
 

@@ -16,11 +16,11 @@ public class Queue {
         return data.isEmpty();
     }
 
-    public void enqueue(Paciente e) {
+    public void enqueue(Cita e) {
         data.addLast(e);
     }
 
-    public Paciente dequeue() throws Exception {
+    public Cita dequeue() throws Exception {
         if (isEmpty()) {
             System.out.println("La cola está vacía.");
             return null;

@@ -3,14 +3,16 @@ package Model;
 public class CentroSalud {
     private List pacientesEPS;
     private List pacientesSISBEN;
-    public Arbol listaUsuariosRegistrados;
+    private Arbol listaUsuariosRegistrados;
     private Queue citas;
+    private Stack historial;
 
     public CentroSalud() {
         pacientesEPS = new List();
         pacientesSISBEN = new List();
         citas = new Queue();
         listaUsuariosRegistrados = new Arbol();
+        historial = new Stack();
     }
 
     private List getPacientesEps() {
@@ -108,25 +110,13 @@ public class CentroSalud {
     }
 
     // CITAS
-    // private boolean crearCita(String cedulaMedico,
-    //         String cedulaPaciente,
-    //         String fecha,
-    //         String hora,
-    //         String tipo,
-    //         double valor) {
 
-    //     Medico medico = buscarMedicoRecursivo(medicos.First(),cedulaMedico);
+    private boolean crearCita(int idPaciente, String especialidad, String problema) {
 
-    //     Paciente paciente =buscarPacienteRecursivo(pacientes.First(),cedulaPaciente);
+        Cita cita = new Cita(idPaciente, especialidad, problema);
 
-    //     if (medico == null || paciente == null) {
-    //         return false;
-    //     }
+        citas.enqueue(cita);
 
-    //     Cita cita =new Cita(medico,paciente,fecha,hora,tipo,valor);
-
-    //     citas.addLast(cita);
-
-    //     return true;
-    // }
+        return true;
+    }
 }

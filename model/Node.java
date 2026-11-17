@@ -1,7 +1,7 @@
 package Model;
 
 public class Node {
-    private Paciente data;
+    private Object data;
     private Node next;
 
     public Node() {
@@ -13,12 +13,20 @@ public class Node {
         this.data = data;
         this.next = null;
     }
+    public Node(Cita data) {
+        this.data = data;
+        this.next = null;
+    }
 
     public Paciente getData() {
         return data;
     }
 
     public void setData(Paciente data) {
+        this.data = data;
+    }
+
+    public void setData(Cita data) {
         this.data = data;
     }
 

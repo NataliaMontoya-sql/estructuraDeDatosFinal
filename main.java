@@ -24,7 +24,7 @@ public class main {
 
         System.out.println(centro.mostrarUsuario(76));
         System.out.println(centro.mostrarUsuario(12));
-        centro.listaUsuariosRegistrados.inOrden();
+        // centro.listaUsuariosRegistrados.inOrden();
         
     }
 

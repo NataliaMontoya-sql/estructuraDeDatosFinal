@@ -1,5 +1,5 @@
 
-package Model.Estructuras;
+package model.Estructuras;
 
 public class Queue {
     private List data;

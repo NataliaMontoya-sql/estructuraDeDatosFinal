@@ -1,31 +1,36 @@
 package controller;
 
-import Model.CentroSalud;
-import Model.CitaNueva;
-import Model.CitaProcesada;
-import Model.Estructuras.Validador;
+import model.CentroSalud;
+import model.CitaNueva;
+import model.CitaProcesada;
+import model.Estructuras.Validador;
 
 public class CitasController {
     private final CentroSalud centro;
 
-    public CitasController() {
-        this.centro = new CentroSalud();
+    public CitasController(CentroSalud c) {
+        this.centro = c;
     }
 
     public CitaNueva registrarNuevaCita() {
         int id = 0;
         do {
             id = Validador.leerEnteroMayor0("Introduzca el ID del usuario");
+            System.out.println("id:" + id + ", " + centro.verificarExiste(id));
 
             if (!centro.verificarExiste(id)) {
-                System.out.println("Este usuario no se encuentra registrado, para poder agendar una cita debes estar registrado");
+                System.out.println(
+                        "Este usuario no se encuentra registrado, para poder agendar una cita debes estar registrado");
             }
+            
             
         } while (!centro.verificarExiste(id));
 
         String especialidad = Validador.leerOpcionMinusculaSinEspacios("Introduzca el nombre de la especialidad a ver");
 
         String problema = Validador.leerOpcionMinusculaSinEspacios("Introduzca el motivo de su cita");
+        
+        centro.crearCita(id, especialidad, problema);
 
         return new CitaNueva(id, especialidad, problema);
     }

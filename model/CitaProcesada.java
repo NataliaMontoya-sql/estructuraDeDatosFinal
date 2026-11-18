@@ -1,10 +1,10 @@
-package Model;
+package model;
 
 public class CitaProcesada extends Cita{
     private String diagnostico;
 
     public CitaProcesada(int id, String e, String d) {
-        super(id, d);
+        super(id, e);
         this.diagnostico = d;
     }
 

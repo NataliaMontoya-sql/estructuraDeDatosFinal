@@ -1,15 +1,15 @@
 package controller;
 
-import Model.CentroSalud;
-import Model.PacienteEPS;
-import Model.PacienteSISBEN;
-import Model.Estructuras.Validador;
+import model.CentroSalud;
+import model.PacienteEPS;
+import model.PacienteSISBEN;
+import model.Estructuras.Validador;
 
 public class PacientesController {
     private final CentroSalud centro;
 
-    public PacientesController(){
-        this.centro = new CentroSalud();
+    public PacientesController(CentroSalud c){
+        this.centro = c;
     }
 
     public PacienteEPS registrarPacienteEPS(){
@@ -74,7 +74,7 @@ public class PacientesController {
         centro.mostrarListaSISBEN();
     }
 
-    public void eliminarPacienteEPS() throws Exception {
+    public void eliminarPaciente() throws Exception {
         int id = 0;
 
         do {
@@ -86,25 +86,9 @@ public class PacientesController {
 
         } while (!centro.verificarExiste(id));
 
-        centro.eliminarPacienteEPS(id);
-        System.out.println("Paciente de EPS eliminado con exito");
+        centro.eliminarPaciente(id);
     }
 
-    public void eliminarPacienteSISBEN() throws Exception {
-        int id = 0;
-
-        do {
-            id = Validador.leerEnteroMayor0("Introduzca el ID del paciente que desea eliminar");
-
-            if (!centro.verificarExiste(id)) {
-                System.out.println("ID no valido");
-            }
-
-        } while (!centro.verificarExiste(id));
-
-        centro.eliminarPacienteSISBEN(id);
-        System.out.println("Paciente de EPS eliminado con exito");
-    }
 
     public void buscarPacienteId() {
         int id = Validador.leerEnteroMayor0("Introduzca el ID del paciente a buscar");
@@ -119,9 +103,17 @@ public class PacientesController {
     public void mostrarListaPreOrder() {
         centro.mostrarListaPreOrder();
     }
+    
     public void mostrarListaPostOrder() {
         centro.mostrarListaPostOrder();
     }
 
+    public void guardarEpsCSV() {
+        centro.pacientesEPSToCSV();
+    }
+
+    public void guardarSisbenCSV() {
+        centro.pacientesSISBENToCSV();
+    }
 
 }

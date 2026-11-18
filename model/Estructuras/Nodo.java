@@ -1,6 +1,6 @@
-package Model.Estructuras;
+package model.Estructuras;
 
-import Model.Paciente;
+import model.Paciente;
 
 public class Nodo { // Esta clase es implementada por los arboles y no por las demás
 

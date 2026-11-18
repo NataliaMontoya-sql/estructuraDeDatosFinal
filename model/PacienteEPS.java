@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class PacienteEPS extends Paciente {
     private String nombreEPS;
@@ -19,6 +19,12 @@ public class PacienteEPS extends Paciente {
     
     @Override
     public String toString() {
-        return getNombre() + " " + getApellido() + " #ID: " + getId() + " es usuario de la eps: " + getNombreEps() + ", tiene " + getEdad() + " años de edad, " + "y su teléfono es: " + getTelefono();
-    }   
+        return getNombre() + " " + getApellido() + " #ID: " + getId() + " es usuario de la eps: " + getNombreEps()
+                + ", tiene " + getEdad() + " años de edad, " + "y su teléfono es: " + getTelefono();
+    }
+    
+    @Override
+    public String toCSV() {
+        return getId() + "," + getNombre() + "," + getApellido() + "," + getEdad() + "," + getTelefono() + "," + getNombreEps(); 
+    }
 }

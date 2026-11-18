@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public abstract class Paciente {
     private int id;
@@ -50,5 +50,7 @@ public abstract class Paciente {
     public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
+
+    public abstract String toCSV();
 
 }

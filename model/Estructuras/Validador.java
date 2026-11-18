@@ -1,4 +1,4 @@
-package Model.Estructuras;
+package model.Estructuras;
 
 import java.util.Scanner;
 
@@ -30,6 +30,28 @@ public class Validador {
 
                 if (numero <= 0) {
                     System.out.println("No puedes poner el 0 o menores a el");
+                } else {
+                    valido = true;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("No has ingresado un numero");
+            }
+
+        } while (!valido);
+
+        return numero;
+    }
+
+    public static int leerEnteroMayorIgual0(String mensaje) {
+        int numero = 0;
+        boolean valido = false;
+        do {
+            try {
+                numero = Integer.parseInt(leerOpcionMinusculaSinEspacios(mensaje));
+
+                if (numero < 0) {
+                    System.out.println("No puedes poner numeros menores a 0");
                 } else {
                     valido = true;
                 }

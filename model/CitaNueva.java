@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class CitaNueva extends Cita {
     private String problema;

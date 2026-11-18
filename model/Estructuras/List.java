@@ -1,11 +1,11 @@
-package Model.Estructuras;
+package model.Estructuras;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import Model.Paciente;
+import model.Paciente;
 
 public class List {
     private Node head;
@@ -196,7 +196,7 @@ public class List {
             while (actual != null) {
                 Paciente paciente = (Paciente) actual.getData();
 
-                pw.println(paciente.toString());
+                pw.println(paciente.toCSV());
 
                 actual = actual.getNext();
             }

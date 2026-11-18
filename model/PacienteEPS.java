@@ -9,11 +9,11 @@ public class PacienteEPS extends Paciente {
 
     }
 
-    private String getNombreEps() {
+    public String getNombreEps() {
         return nombreEPS;
     }
 
-    private void setNombreEps(String nombreEps) {
+    public void setNombreEps(String nombreEps) {
         this.nombreEPS = nombreEps;
     }
     

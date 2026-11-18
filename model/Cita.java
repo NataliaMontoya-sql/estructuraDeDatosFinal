@@ -5,16 +5,16 @@ public abstract class Cita {
     private String especialidad;
 
 
-    protected Cita(int id, String especialidad) {
+    public Cita(int id, String especialidad) {
         this.idPaciente = id;
         this.especialidad = especialidad;
     }
 
-    protected int getIdPaciente() {
+    public int getIdPaciente() {
         return idPaciente;
     }
 
-    protected String getEspecialidad(){
+    public String getEspecialidad(){
         return especialidad;
     }
 

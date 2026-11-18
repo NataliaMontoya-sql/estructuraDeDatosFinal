@@ -15,25 +15,42 @@ public class CentroSalud {
         historial = new Stack();
     }
 
-    private List getPacientesEps() {
-        return pacientesEPS;
-    }
+    // public List getPacientesEps() {
+    //     return pacientesEPS;
+    // }
 
-    private List getPacientesSisben() {
-        return pacientesSISBEN;
-    }
+    // public List getPacientesSisben() {
+    //     return pacientesSISBEN;
+    // }
 
-    private Queue getCitas() {
-        return citas;
-    }
+    // public Queue getCitas() {
+    //     return citas;
+    // }
     
     public String mostrarUsuario(int id) {
         Paciente paciente = listaUsuariosRegistrados.busquedaParaMostrar(id);
         return (paciente == null) ? "Paciente no encontrado" : paciente.toString();
     }
 
+    public void pacientesEPSToCSV() {
+        pacientesEPS.guardarEnCSV("Pacientes_eps.csv",
+                "Pacientes EPS\nID/Nombre/Apellido/Edad/Telefono/Nombre de su EPS");
+    }
+    
+    public void pacientesSISBENToCSV() {
+        pacientesSISBEN.guardarEnCSV("Pacientes_sisben.csv", "Pacientes Sisben\nID/Nombre/Apellido/Edad/Telefono/Puntaje del Sisben");
+    }
+
     public void mostrarListaEPS(){
         pacientesEPS.mostrarLista();
+    }
+
+    public void mostrarListaSISBEN() {
+        pacientesSISBEN.mostrarLista();
+    }
+    
+    public void mostrarCitasPendientes() {
+        citas.showQueue();
     }
 
     public boolean verificarExiste(int id){
@@ -72,16 +89,40 @@ public class CentroSalud {
             } else actual = actual.getNext();
         }
 
-        // actual = pacientesSISBEN.first();
+        System.out.println("Error al eliminar");
 
-        // for ( int i = 0; i < pacientesSISBEN.size(); i++) {
-        //     if (id == ((PacienteSISBEN) actual.getData()).getId()) {
-        //         System.out.println("Paciente del SISBEN removido correctamente");
-        //         listaUsuariosRegistrados.eliminarPredecesor(id);
-        //         pacientesSISBEN.removeAt(i);
-        //         return;
-        //     } else actual = actual.getNext();
-        // }
+    }
+    
+    public void eliminarPacienteSISBEN(int id) throws Exception {
+        
+        Queue temp = new Queue();
+        boolean citaActiva = false;
+
+        for (int i = 0; i < citas.size(); i++) {
+            Paciente x = (Paciente) citas.dequeue();
+            temp.enqueue(x);
+            if (id == x.getId()) {
+                citaActiva = true;
+            }
+        }
+
+        citas = temp;
+
+        if (citaActiva) {
+            System.out.println("El usuario tiene una cita activa, no se puede eliminar");
+            return;
+        }
+
+        Node actual = pacientesSISBEN.first();
+
+        for ( int i = 0; i < pacientesSISBEN.size(); i++) {
+            if (id == ((PacienteSISBEN) actual.getData()).getId()) {
+                System.out.println("Paciente del SISBEN removido correctamente");
+                listaUsuariosRegistrados.eliminarPredecesor(id);
+                pacientesSISBEN.removeAt(i);
+                return;
+            } else actual = actual.getNext();
+        }
 
         System.out.println("Error al eliminar");
 
@@ -95,12 +136,11 @@ public class CentroSalud {
         return true;
     }
 
-    public boolean registrarPacienteSisben(PacienteSISBEN paciente) {
+    public CitaNueva procesarCita() throws Exception {
+        return (CitaNueva) citas.dequeue();
+    }
 
-        if (listaUsuariosRegistrados.busqueda(paciente.getId())) {
-            System.err.println("Usuario ya se encuentra registrado por lo que no se puede registrar nuevamente");
-            return false;
-        }
+    public boolean registrarPacienteSisben(PacienteSISBEN paciente) {
 
         pacientesSISBEN.addLast(paciente);
         listaUsuariosRegistrados.insertarNodo(paciente);
@@ -108,14 +148,35 @@ public class CentroSalud {
         return true;
     }
 
+    public void agregarHistorial(CitaProcesada cita) {
+        historial.push(cita);
+    }
+
+    public void mostrarListaInOrder() {
+        listaUsuariosRegistrados.inOrden();
+    }
+    
+    public void mostrarListaPreOrder() {
+        listaUsuariosRegistrados.preOrden();
+    }
+
+    public void mostrarListaPostOrder() {
+        listaUsuariosRegistrados.postOrden();
+    }
+    
     // CITAS
 
-    private boolean crearCita(int idPaciente, String especialidad, String problema) {
+    public void crearCita(int idPaciente, String especialidad, String problema) {
 
-        CitaNueva cita = new CitaNueva(idPaciente, especialidad, problema);
+        citas.enqueue(new CitaNueva(idPaciente, especialidad, problema));
 
-        citas.enqueue(cita);
+    }
 
-        return true;
+    public void mostrarUltimaAtencion() {
+        System.out.println(((CitaProcesada) historial.top()).toString());
+    }
+    
+    public void mostrarHistorial() {
+        historial.showStack();
     }
 }

@@ -1,14 +1,14 @@
 package Model;
 
 public class PacienteSISBEN extends Paciente {
-    private int puntajeSISBEN;
+    private String puntajeSISBEN;
 
-    public PacienteSISBEN(int id, String nombre, String apellido, int edad, long telefono, int puntajeSisben) {
+    public PacienteSISBEN(int id, String nombre, String apellido, int edad, long telefono, String puntajeSisben) {
         super(id, nombre, apellido, edad, telefono);
         this.puntajeSISBEN = puntajeSisben;
     }
 
-    private int getPuntajeSisben() {
+    public String getPuntajeSisben() {
         return puntajeSISBEN;
     }
     

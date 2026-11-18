@@ -1,5 +1,10 @@
 package Model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class List {
     private Node head;
     private Node tail;
@@ -168,33 +173,39 @@ public class List {
         System.out.println("null");
     }
 
-    // MÉTODO NUEVO PARA GUARDAR EN CSV <SE TIENE QUE MODIFICAR>
      
-    // public void guardarEnCSV(String nombreArchivo) {
-    //     try {
-    //         FileWriter fw = new FileWriter(nombreArchivo);
-    //         PrintWriter pw = new PrintWriter(fw);
+    public void guardarEnCSV(String nombreArchivo, String encabezado) {
+        try {
+            File archivo = new File(nombreArchivo);
+            boolean escribirEncabezado = !archivo.exists() || archivo.length() == 0;
 
-    //         Node actual = head;
 
-    //         // Encabezado del archivo CSV
-    //         pw.println("Registro de Estudiantes y Profesores\ntipo,nombre,edad,correo,carrera_o_facultad,contacto");
+            FileWriter fw = new FileWriter(archivo, true);
+            PrintWriter pw = new PrintWriter(fw);
 
-    //         while (actual != null) {
-    //             Persona persona = (Persona) actual.getData();
+            // Encabezado del archivo CSV solo si este no esta
+            if (escribirEncabezado) {
+                pw.println(encabezado);
+            }
 
-    //             pw.println(persona.toString());
+            Node actual = head;
 
-    //             actual = actual.getNext();
-    //         }
 
-    //         pw.close();
-    //         fw.close();
+            while (actual != null) {
+                Paciente paciente = (Paciente) actual.getData();
 
-    //         System.out.println("Archivo guardado correctamente como '" + nombreArchivo + "'");
-    //     } catch (IOException e) {
-    //         System.out.println("Error al guardar el archivo: " + e.getMessage());
-    //     }
-    // }
+                pw.println(paciente.toString());
+
+                actual = actual.getNext();
+            }
+
+            pw.close();
+            fw.close();
+
+            System.out.println("Archivo guardado correctamente como '" + nombreArchivo + "'");
+        } catch (IOException e) {
+            System.out.println("Error al guardar el archivo: " + e.getMessage());
+        }
+    }
 
 }

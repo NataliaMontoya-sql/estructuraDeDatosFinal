@@ -18,6 +18,6 @@ public class CitaProcesada extends Cita{
 
     @Override
     public String toString(){
-        return "Cita atendida: " + getIdPaciente() + ", de la especialidad " + getEspecialidad() + ", tuvo el siguiente diagnostico: " + getDiagnostico() + ".";
+        return "El paciente: " + getIdPaciente() + ", atendio a la cita de la especialidad " + getEspecialidad() + ", tuvo el siguiente diagnostico: " + getDiagnostico() + ".";
     }
 }

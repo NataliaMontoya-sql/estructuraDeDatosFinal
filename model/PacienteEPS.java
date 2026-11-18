@@ -18,7 +18,7 @@ public class PacienteEPS extends Paciente {
     }
     
     @Override
-    public String mostrarInformacion() {
+    public String toString() {
         return getNombre() + " " + getApellido() + " #ID: " + getId() + " es usuario de la eps: " + getNombreEps() + ", tiene " + getEdad() + " años de edad, " + "y su teléfono es: " + getTelefono();
     }   
 }

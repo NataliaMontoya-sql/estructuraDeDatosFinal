@@ -9,24 +9,16 @@ public class Node {
         this.next = null;
     }
     
-    public Node(Paciente data) {
-        this.data = data;
-        this.next = null;
-    }
-    public Node(Cita data) {
+    public Node(Object data) {
         this.data = data;
         this.next = null;
     }
 
-    public Paciente getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(Paciente data) {
-        this.data = data;
-    }
-
-    public void setData(Cita data) {
+    public void setData(Object data) {
         this.data = data;
     }
 

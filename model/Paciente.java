@@ -51,6 +51,4 @@ public abstract class Paciente {
         this.telefono = telefono;
     }
 
-    protected abstract String mostrarInformacion();
-
 }

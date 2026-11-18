@@ -31,7 +31,7 @@ public class List {
         return tail;
     }
 
-    public void addFirst(Paciente obj) {
+    public void addFirst(Object obj) {
         Node node = new Node(obj);
 
         if (isEmpty()) {
@@ -45,7 +45,7 @@ public class List {
         size++;
     }
 
-    public void addLast(Paciente obj) {
+    public void addLast(Object obj) {
         Node node = new Node(obj);
 
         if (isEmpty()) {
@@ -59,7 +59,7 @@ public class List {
         size++;
     }
 
-    public Paciente removeFirst() throws Exception {
+    public Object removeFirst() throws Exception {
         if (!isEmpty()) {
             Node temp = head;
             head = temp.getNext();
@@ -76,7 +76,7 @@ public class List {
         }
     }
 
-    public Paciente removeLast() throws Exception {
+    public Object removeLast() throws Exception {
         if (size == 1) {
             return removeFirst();
         } else if (size > 1) {
@@ -98,7 +98,7 @@ public class List {
     }
 
     //Añadir nodo en cualquier posición
-    public void addAt(int posicion, Paciente obj) throws Exception {
+    public void addAt(int posicion, Object obj) throws Exception {
         if (posicion < 0 || posicion > size) {
             throw new Exception("Posición inválida");
         }
@@ -126,7 +126,7 @@ public class List {
     }
 
     //Remover nodo en cualquier posición
-    public Paciente removeAt(int posicion) throws Exception {
+    public Object removeAt(int posicion) throws Exception {
         if (isEmpty()) {
             throw new Exception("La lista está vacía");
         }

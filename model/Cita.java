@@ -1,30 +1,21 @@
 package Model;
 
-public class Cita {
+public abstract class Cita {
     private int idPaciente;
     private String especialidad;
-    private String problema;
-    private String atencionPrestada;
 
-    public Cita(int id, String especialidad, String problema) {
+
+    protected Cita(int id, String especialidad) {
         this.idPaciente = id;
         this.especialidad = especialidad;
-        this.problema = problema;
     }
 
-    public String getAtencionPrestada() {
-        return atencionPrestada;
+    protected int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setAtencionPrestada(String atencion){
-        this.atencionPrestada = atencion;
+    protected String getEspecialidad(){
+        return especialidad;
     }
 
-    public String getProblema() {
-        return problema;
-    }
-
-    public void setProblema(String problema){
-        this.problema = problema;
-    }
 }

@@ -29,21 +29,25 @@ public class CentroSalud {
     
     public String mostrarUsuario(int id) {
         Paciente paciente = listaUsuariosRegistrados.busquedaParaMostrar(id);
-        return (paciente == null) ? "Paciente no encontrado" : paciente.mostrarInformacion();
+        return (paciente == null) ? "Paciente no encontrado" : paciente.toString();
+    }
+
+    public void mostrarListaEPS(){
+        pacientesEPS.mostrarLista();
+    }
+
+    public boolean verificarExiste(int id){
+        return listaUsuariosRegistrados.busqueda(id);
+
     }
     
-    public void eliminar(int id) throws Exception {
+    public void eliminarPacienteEPS(int id) throws Exception {
         
-        if (!listaUsuariosRegistrados.busqueda(id)) {
-            System.err.println("Usuario no se encuentra registrado");
-            return;
-        }
-
         Queue temp = new Queue();
         boolean citaActiva = false;
 
         for (int i = 0; i < citas.size(); i++) {
-            Paciente x = citas.dequeue();
+            Paciente x = (Paciente) citas.dequeue();
             temp.enqueue(x);
             if (id == x.getId()) {
                 citaActiva = true;
@@ -60,7 +64,7 @@ public class CentroSalud {
        Node actual = pacientesEPS.first();
 
         for ( int i = 0; i < pacientesEPS.size(); i++) {
-            if (id == actual.getData().getId()) {
+            if (id == ((PacienteEPS)actual.getData()).getId()) {
                 pacientesEPS.removeAt(i);
                 listaUsuariosRegistrados.eliminarPredecesor(id);
                 System.out.println("Paciente de EPS removido correctamente");
@@ -68,27 +72,22 @@ public class CentroSalud {
             } else actual = actual.getNext();
         }
 
-        actual = pacientesSISBEN.first();
+        // actual = pacientesSISBEN.first();
 
-        for ( int i = 0; i < pacientesSISBEN.size(); i++) {
-            if (id == actual.getData().getId()) {
-                System.out.println("Paciente del SISBEN removido correctamente");
-                listaUsuariosRegistrados.eliminarPredecesor(id);
-                pacientesSISBEN.removeAt(i);
-                return;
-            } else actual = actual.getNext();
-        }
+        // for ( int i = 0; i < pacientesSISBEN.size(); i++) {
+        //     if (id == ((PacienteSISBEN) actual.getData()).getId()) {
+        //         System.out.println("Paciente del SISBEN removido correctamente");
+        //         listaUsuariosRegistrados.eliminarPredecesor(id);
+        //         pacientesSISBEN.removeAt(i);
+        //         return;
+        //     } else actual = actual.getNext();
+        // }
 
         System.out.println("Error al eliminar");
 
     }
 
     public boolean registrarPacienteEps(PacienteEPS paciente) {
-
-        if (listaUsuariosRegistrados.busqueda(paciente.getId())) {
-            System.err.println("Usuario ya se encuentra registrado por lo que no se puede registrar nuevamente");
-            return false;
-        }
 
         pacientesEPS.addLast(paciente);
         listaUsuariosRegistrados.insertarNodo(paciente);
@@ -113,7 +112,7 @@ public class CentroSalud {
 
     private boolean crearCita(int idPaciente, String especialidad, String problema) {
 
-        Cita cita = new Cita(idPaciente, especialidad, problema);
+        CitaNueva cita = new CitaNueva(idPaciente, especialidad, problema);
 
         citas.enqueue(cita);
 

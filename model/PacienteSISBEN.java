@@ -13,7 +13,7 @@ public class PacienteSISBEN extends Paciente {
     }
     
     @Override
-    public String mostrarInformacion() {
+    public String toString() {
         return getNombre() + " " + getApellido() + " #ID: " + getId() + " es usuario del sisben con un puntaje de: " + getPuntajeSisben() + ", tiene " + getEdad() + " años de edad, " + "y su teléfono es: " + getTelefono();
     }
 

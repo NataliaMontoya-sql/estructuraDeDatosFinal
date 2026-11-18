@@ -3,7 +3,7 @@ package controller;
 import Model.CentroSalud;
 import Model.CitaNueva;
 import Model.CitaProcesada;
-import Model.Validador;
+import Model.Estructuras.Validador;
 
 public class CitasController {
     private final CentroSalud centro;

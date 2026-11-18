@@ -1,4 +1,4 @@
-package Model;
+package Model.Estructuras;
 
 public class Stack {
     private List data;

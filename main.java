@@ -9,13 +9,14 @@ public class main {
 
     public static void main(String[] args) throws Exception {
 
-        // PacientesController test = new PacientesController();
+        PacientesController test = new PacientesController();
         
         // test.registrarPacienteEPS();
-        // test.registrarPacienteEPS();
+        test.registrarPacienteEPS();
         // test.registrarPacienteEPS();
 
-        // // centro.citas.enqueue(new CitaNueva(32, " asd", " asd"));
+        
+        // centro.citas.enqueue(new CitaNueva(32, " asd", " asd"));
 
 
         // test.mostrarListaEPS();
@@ -25,6 +26,7 @@ public class main {
         // test.mostrarListaPostOrder();
         
         // System.out.println(centro.mostrarUsuario(12));
+        // System.out.println(centro.mostrarUsuario());
         // centro.pacientesEPS.mostrarLista();
         // centro.pacientesSISBEN.mostrarLista();
         // centro.citas.showQueue();

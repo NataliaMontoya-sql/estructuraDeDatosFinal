@@ -15,39 +15,39 @@ public abstract class Paciente {
         this.telefono = telefono;
     }
 
-    protected String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    protected int getId() {
+    public int getId() {
         return id;
     }
 
-    protected String getApellido() {
+    public String getApellido() {
         return apellido;
     }
 
-    protected String getNombreCompleto() {
+    public String getNombreCompleto() {
         return nombre + " " + apellido;
     }
 
-    protected int getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    protected long getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    protected void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    protected void setApellido(String apellido) {
+    public void setApellido(String apellido) {
         this.apellido = apellido;
     }
     
-    protected void setTelefono(long telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 

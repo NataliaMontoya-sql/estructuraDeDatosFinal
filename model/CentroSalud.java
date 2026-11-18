@@ -1,5 +1,11 @@
 package Model;
 
+import Model.Estructuras.Arbol;
+import Model.Estructuras.List;
+import Model.Estructuras.Node;
+import Model.Estructuras.Queue;
+import Model.Estructuras.Stack;
+
 public class CentroSalud {
     private List pacientesEPS;
     private List pacientesSISBEN;

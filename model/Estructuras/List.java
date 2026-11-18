@@ -1,9 +1,11 @@
-package Model;
+package Model.Estructuras;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import Model.Paciente;
 
 public class List {
     private Node head;

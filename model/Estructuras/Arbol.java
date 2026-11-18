@@ -1,4 +1,6 @@
-package Model;
+package Model.Estructuras;
+
+import Model.Paciente;
 
 public class Arbol {
 

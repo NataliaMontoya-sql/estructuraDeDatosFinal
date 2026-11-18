@@ -1,4 +1,4 @@
-package Model;
+package Model.Estructuras;
 
 import java.util.Scanner;
 
